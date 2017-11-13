@@ -4,7 +4,7 @@ class Pokemon
   attr_accessor :id, :name, :type, :db, :hp
   @@all = []
 
-  def initialize(id = nil, name = nil, type = nil, db = nil)
+  def initialize(id = nil, name = nil, type = nil, db = nil, hp = 60)
     @id = id
     @name = name
     @type = type
@@ -26,6 +26,5 @@ class Pokemon
   def self.find(id, db)
     attributes = db.execute("SELECT * FROM pokemon WHERE id =?", id).flatten
     poke = Pokemon.new(attributes[0], attributes[1], attributes[2], db)
-    binding.pry
   end
 end
